@@ -39,7 +39,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Perform a query against the database with user name and password fields
 	 */
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception
+	{
 		auth.jdbcAuthentication()
 				.usersByUsernameQuery(usersQuery)
 				.authoritiesByUsernameQuery(rolesQuery)
@@ -50,10 +51,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Configure HTTP permissions
 	 */
 	@Override
-	protected void configure(HttpSecurity http) throws Exception{
+	protected void configure(HttpSecurity http) throws Exception
+    {
 		
 		http.authorizeRequests()
-				.antMatchers("/", "/home", "/error/**", "/posts", "/posts/view/**", "/users/logout", "/users/register", "/users/login").permitAll()
+				.antMatchers("/", "/home", "/error/**", "/posts", "/posts/view/**", "/users/logout", "/users/register", "/users/login", "/h2/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -71,7 +73,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Configure Web permissions (images, css, js, etc.)
 	 */
 	@Override
-	public void configure(WebSecurity web) throws Exception{
+	public void configure(WebSecurity web) throws Exception
+    {
 		web.ignoring()
 				.antMatchers("/resources/**", "/static/**", "/css/**", "/img/**", "/js/**");
 		
