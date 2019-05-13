@@ -8,9 +8,9 @@
 <body>
 	<header th:replace="layout::site-header"></header>
 
-	<h2>Login in the Blog</h2>
-	
 	<div class="container row">
+		<div class="col-sm-3" th:replace="layout::left-side"></div>
+		<div class="col-sm-9">
 		<form method="post" th:action="@{/users/login}" class="form col-md-5 col-md-offset-7">
 		  <div class="form-group">
 		  	<label for="userName">User Name</label>
@@ -28,6 +28,7 @@
 		  </div><!-- Submit Button -->		  
 		  <div class="form-group alert alert-danger" th:if="${param.error}">Invalid Username or password</div><!-- Error message -->
 		</form>
+		</div>
 		
 	</div>	
 	
